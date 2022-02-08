@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:number_teller/functions/converter.dart';
 import 'package:number_teller/shared/textStyle.dart';
 
 class AnswerWidget extends StatelessWidget {
@@ -16,9 +17,12 @@ class AnswerWidget extends StatelessWidget {
         const SizedBox(
           height: 30.0,
         ),
-        Text(
-          input,
-          style: mainTextStyle,
+        SizedBox(
+          child: Text(
+            input == '' ? 'No number added' : converter(inputString: input),
+            style: mainTextStyle.copyWith(fontSize: 16.0),
+            textAlign: TextAlign.center,
+          ),
         ),
       ],
     );

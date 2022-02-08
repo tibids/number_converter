@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:number_teller/widgets/homePage.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
   runApp(const MyApp());
 }
 

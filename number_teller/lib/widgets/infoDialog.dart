@@ -9,10 +9,11 @@ class InfoDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       shape: mainCardBorder,
+      backgroundColor: Colors.white.withOpacity(0.8),
       content: Padding(
         padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
         child: Text(
-          'This app converts your numbers given by digits into words.',
+          'This app converts your numbers given by digits into words. Please use numbers below 1 billion.',
           textAlign: TextAlign.center,
           style: mainTextStyle.copyWith(fontSize: 16.0),
         ),
