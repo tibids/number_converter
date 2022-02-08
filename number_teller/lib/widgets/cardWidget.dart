@@ -13,8 +13,17 @@ class CardWidget extends StatefulWidget {
 }
 
 class _CardWidgetState extends State<CardWidget> {
+  String input = '15';
+
+  updateInputNum({required String newInput}) {
+    setState(() {
+      input = newInput;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(input);
     return Card(
       shape: mainCardBorder,
       elevation: 30,
@@ -75,9 +84,13 @@ class _CardWidgetState extends State<CardWidget> {
                 const SizedBox(
                   height: 50.0,
                 ),
-                const InputTextField(),
+                InputTextField(
+                  callBack: updateInputNum,
+                ),
                 const SizedBox(height: 80.0),
-                const AnswerWidget()
+                AnswerWidget(
+                  input: input,
+                )
               ],
             ),
           ),

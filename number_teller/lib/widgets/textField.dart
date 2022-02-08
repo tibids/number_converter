@@ -3,13 +3,17 @@ import 'package:number_teller/shared/textStyle.dart';
 import 'package:flutter/services.dart';
 
 class InputTextField extends StatefulWidget {
-  const InputTextField({Key? key}) : super(key: key);
+  InputTextField({Key? key, required this.callBack}) : super(key: key);
+  Function callBack;
 
   @override
-  _InputTextFieldState createState() => _InputTextFieldState();
+  _InputTextFieldState createState() =>
+      _InputTextFieldState(callBack: callBack);
 }
 
 class _InputTextFieldState extends State<InputTextField> {
+  Function callBack;
+  _InputTextFieldState({required this.callBack});
   String number = '';
 
   @override
@@ -24,6 +28,13 @@ class _InputTextFieldState extends State<InputTextField> {
               FilteringTextInputFormatter.digitsOnly
             ],
             style: mainTextStyle.copyWith(fontSize: 25.0),
+            textAlign: TextAlign.center,
+            cursorColor: Colors.blueGrey,
+            decoration: const InputDecoration(
+                enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blueGrey)),
+                focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blueGrey))),
             onChanged: (inputString) {
               setState(() {
                 number = inputString;
@@ -35,7 +46,7 @@ class _InputTextFieldState extends State<InputTextField> {
                   overlayColor: MaterialStateProperty.all(
                       Colors.blueGrey.withOpacity(0.05))),
               onPressed: () {
-                //number converter function here
+                callBack(newInput: number);
               },
               child: const Text(
                 'Convert',
