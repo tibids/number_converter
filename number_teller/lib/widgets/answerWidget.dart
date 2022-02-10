@@ -5,6 +5,7 @@ import 'package:number_teller/shared/textStyle.dart';
 class AnswerWidget extends StatelessWidget {
   AnswerWidget({Key? key, required this.input}) : super(key: key);
   String input;
+  final converter = Converter();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,9 @@ class AnswerWidget extends StatelessWidget {
         ),
         SizedBox(
           child: Text(
-            input == '' ? 'No number added' : converter(inputString: input),
+            input == ''
+                ? 'No number added'
+                : converter.convert(inputString: input),
             style: mainTextStyle.copyWith(fontSize: 16.0),
             textAlign: TextAlign.center,
           ),
